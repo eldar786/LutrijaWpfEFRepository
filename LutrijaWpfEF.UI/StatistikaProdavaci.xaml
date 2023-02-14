@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="LutrijaWpfEF.UI.StatistikaProdavaci"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LutrijaWpfEF.UI"
+             xmlns:vm="clr-namespace:LutrijaWpfEF.ViewModel;assembly=LutrijaWpfEF.ViewModel"
+             mc:Ignorable="d" 
+                d:DesignHeight="900" d:DesignWidth="1800"
+            
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+
+        <UserControl.Resources>
+            <DataTemplate DataType="{x:Type vm:StatistikaProdavaciViewModel}">
+                <!--<local:OrgView/>-->
+            </DataTemplate>
+        </UserControl.Resources>
+        <DockPanel LastChildFill="True">
+            <Grid DockPanel.Dock ="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontSize="30" FontWeight="Bold">TOP 5 PRODAVAČA</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                <ListView  
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      x:Name="lstUplataOI" 
+                      ItemsSource="{Binding Path=Prikazi}"                              
+                      FontSize="18"
+                      HorizontalContentAlignment="Stretch">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Op.Br" DisplayMemberBinding="{Binding Path=opBrojUpl}" />
+                                <GridViewColumn Header="Naziv" DisplayMemberBinding="{Binding Path=imePrezimeUpl}" />
+                                <GridViewColumn Header="M" DisplayMemberBinding="{Binding Path=mjesecUpl}" />
+                                <GridViewColumn Header="G" DisplayMemberBinding="{Binding Path=godinaUpl}" />
+                                <GridViewColumn Header="Iznos" DisplayMemberBinding="{Binding Path=uplataOsIg}" />
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView  
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      x:Name="lstUplataKlad" 
+                      ItemsSource="{Binding Path=PocetnaStanja}"                              
+                      FontSize="18"
+                      HorizontalContentAlignment="Stretch">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Op.Br" DisplayMemberBinding="{Binding Path=opBrojUpl}" />
+                                <GridViewColumn Header="Naziv" DisplayMemberBinding="{Binding Path=imePrezimeUpl}" />
+                                <GridViewColumn Header="M" DisplayMemberBinding="{Binding Path=mjesecUpl}" />
+                                <GridViewColumn Header="G" DisplayMemberBinding="{Binding Path=godinaUpl}" />
+                                <GridViewColumn Header="Iznos" DisplayMemberBinding="{Binding Path=uplataOsIg}" />
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView></ListView>
+                <ListView></ListView>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                <ListView  
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      x:Name="lstIsplataOI" 
+                      ItemsSource="{Binding Path=UplateOsnIgre}"                              
+                      FontSize="18"
+                      HorizontalContentAlignment="Stretch">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Op. Broj" DisplayMemberBinding="{Binding Path=OP_BROJ}" />
+                                <GridViewColumn Header="Ime i Prezime" DisplayMemberBinding="{Binding Path=ImePrezime}" />
+                                <GridViewColumn Header="Mjesec" DisplayMemberBinding="{Binding Path=MJESEC}" />
+                                <GridViewColumn Header="Godina" DisplayMemberBinding="{Binding Path=GODINA}" />
+                                <GridViewColumn Header="Uplata Osn. Igre" DisplayMemberBinding="{Binding Path=UPLATA_OSN_IGRE}" />
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView></ListView>
+                <ListView></ListView>
+                <ListView></ListView>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+    </UserControl>

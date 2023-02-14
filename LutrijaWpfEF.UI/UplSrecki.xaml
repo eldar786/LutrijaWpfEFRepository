@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="LutrijaWpfEF.UI.UplSrecki"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LutrijaWpfEF.UI"
+             xmlns:vm="clr-namespace:LutrijaWpfEF.ViewModel;assembly=LutrijaWpfEF.ViewModel"
+             xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="850" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:DinoUplSreckiViewModel}">
+            <local:UplSrecki/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:IzmijeniUplSreckiDinoViewModel}">
+            <local:IzmijeniUplSrecki/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock ="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+
+
+            </Grid.RowDefinitions>
+
+            <Label Content="uplata srecki" />
+
+            <extToolkit:WatermarkTextBox Text="{Binding Pretraga, UpdateSourceTrigger=PropertyChanged}" x:Name="txtSearchText" Grid.Row="0"  Grid.Column="0" Padding="3" Grid.ColumnSpan="2" Height="32" Margin="20,0,0,0"  HorizontalAlignment="Stretch" CharacterCasing="Upper">
+                <extToolkit:WatermarkTextBox.Watermark>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Ikone/find-icon.png" Stretch="None" Margin="4,2,2,2" />
+                        <TextBox Text="Unesite vrijednost pretrage - Operativni broj" Margin="4,2,2,2" FontWeight="Regular" BorderThickness="0"/>
+                    </StackPanel>
+                </extToolkit:WatermarkTextBox.Watermark>
+            </extToolkit:WatermarkTextBox>
+            <!--Ovaj ListView je posrednik izmedju stvarne kolekcije i kontrole-->
+            <!--Definisemo kada ce doci do propagiranja vrijednosti na property i zato koristimo UpdateSourceTrigger=PropertyChanged
+            propagiranje vrsimo odmah nakon promjene vrijednosti  -->
+            <ListView  ItemsSource="{Binding SveUplSrecki, ValidatesOnNotifyDataErrors=False}" SelectedItem="{Binding OdabranaUplSrecki, ValidatesOnNotifyDataErrors=False}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9"  ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="16" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" FontWeight="Normal" Margin="4,81,-4,13">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="OP__BROJ__PROD" Width="250" DisplayMemberBinding="{Binding Path=OP_BROJ, ValidatesOnNotifyDataErrors=False}"/>
+                        <!--<GridViewColumn Header="OPIS" Width="450" DisplayMemberBinding="{Binding Path=OPIS, ValidatesOnNotifyDataErrors=False}"/>-->
+                        <GridViewColumn Header="DATUM" Width="250" DisplayMemberBinding="{Binding Path=DATUM, ValidatesOnNotifyDataErrors=False}"/>
+                        <GridViewColumn Header="IZNOS" Width="200" DisplayMemberBinding="{Binding Path=UPL, ValidatesOnNotifyDataErrors=False}"/>
+                        <GridViewColumn Header="IGRA" Width="200" DisplayMemberBinding="{Binding Path=NazivIgre, ValidatesOnNotifyDataErrors=False}"/>
+                        <GridViewColumn Header="KOLO" Width="250" DisplayMemberBinding="{Binding Path=RED_KOLO, ValidatesOnNotifyDataErrors=False}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+            <StackPanel Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnSacuvajFormu" Command="{Binding DodajCommand}"  Grid.Row="5" Grid.Column="3" FontSize="16" Content="Dodaj" Height="40" Width="100" Margin="10"/>
+                <Button x:Name="btnIzmjeni" Command="{Binding IzmijeniCommand}"  Grid.Row="5" Grid.Column="4" FontSize="16" Content="Izmjeni" Height="40" Width="100"  Margin="10"/>
+            </StackPanel>
+            <!--<Button x:Name="btnObrisi" Command="{Binding DeleteCommand}" Grid.Row="5" Grid.Column="7" FontSize="16" Content="Obrisi" Height="40" Width="100" Margin="10"/>-->
+
+        </Grid>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e09dbd85c83b48cc90b0170088fcd1ec" Name="Diagram1">
+        <EntityTypeShape EntityType="OrgModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.AUTOMATI" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.AUTOMATI_KOMITENTI" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.AUTOMATI_RADNJE" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.AUTOMATI_SABINA" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.BAZNE_IGRE" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.ENTITETI" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.EOP_ANA" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.EOP_SIN" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.EopAnas" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.ESRECKE_IGRE" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.IGRE" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.IMP_EOP_ANA" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.IMP_ISPLATA" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.ISPLATA" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.ISPLATA_SINTETIKA" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.KANTONI" Width="1.5" PointX="13.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.KLADIONICA" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.KLADIONICA_IGRE" Width="1.5" PointX="5.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.OPCINE" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.POC_STANJA" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.POLOG_PAZAR" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.PRIJAVA_ORG" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.PROVJERA_KLADIONICA" Width="1.5" PointX="8" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.REGIONI" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.RUCNE_OPERACIJE" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.SRECKE" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.sysdiagrams" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.UPLATA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.ZADUZENJE_GOTOVINE" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.IMP_AUTOMATI" Width="1.5" PointX="2.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.IMP_AUTOMATI_SABINA" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.IMPORT_AUTOMATI_SABINA" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.GR_ORGANIZACIJE_VIEW" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.komitenti_ime_matbr_zracun" Width="1.5" PointX="17.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrgModel.v_GR_Komitenti" Width="1.5" PointX="6.75" PointY="17.75" IsExpanded="true" />
+        <AssociationConnector Association="OrgModel.FK_AUTOMATI_RADNJE_AUTOMATI_RADNJE" ManuallyRouted="false" />
+        <AssociationConnector Association="OrgModel.FK_UPLATA_IGRE" ManuallyRouted="false" />
+        <AssociationConnector Association="OrgModel.FK_KLADIONICA_KLADIONICA_IGRE" ManuallyRouted="false" />
+        <AssociationConnector Association="OrgModel.FK_PROVJERA_KLADIONICA_KLADIONICA_IGRE" ManuallyRouted="false" />
+        <AssociationConnector Association="OrgModel.FK_UPLATA_UPLATA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

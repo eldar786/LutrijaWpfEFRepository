@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="LutrijaWpfEF.UI.ImportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:LutrijaWpfEF.ViewModel;assembly=LutrijaWpfEF.ViewModel"
+             xmlns:local="clr-namespace:LutrijaWpfEF.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="1500">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:ImportViewModel}">
+            <local:ImportView/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+
+    <DockPanel LastChildFill="True">
+        <Grid>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="left">
+
+                <Popup x:Name="loadingPopup" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=ana}">
+
+                    <Grid Height="100" Width="600" Background="AliceBlue">
+
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                            <ProgressBar x:Name="progresBar" Width="520" Height="25" Visibility="Visible"></ProgressBar>
+                            <TextBlock x:Name ="tekstPB" FontSize="7" FontFamily="Verdana" FontWeight="ExtraBlack" Width="560" HorizontalAlignment="Left"  VerticalAlignment="Bottom"></TextBlock>
+                            <Button Width="50" Height="20" Command="{Binding CancelCommand}">Otkaži</Button>
+                        </StackPanel>
+                    </Grid>
+                </Popup>
+            </StackPanel>
+
+
+            <Grid DockPanel.Dock ="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                 
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--<Button Height="70" Width="300" Grid.Row="1" Grid.Column="1" Command="{Binding EopAnaCommand}" Content="Dnevna uplata klasičnih igara" FontSize="20" />-->
+
+                <!--<Button Click="EOP_Analitika" Height="70" Width="300" Grid.Row="1" Grid.Column="1" Content="Analitika" FontSize="20" />-->
+
+                <!--<Button Height="70" Width="280" Grid.Row="1" Grid.Column="2" Command="{Binding EopSinCommand}"  Content="Unos isplate klasičnih igara" FontSize="20" />-->
+
+                <Button Command="{Binding Eop_SinCommand}" Height="70" Width="280" Grid.Row="1" Grid.Column="1" Content="Uplata" FontSize="20" />
+                <Button Command="{Binding PonistiSinCommand}" Height="70" Width="280" Grid.Row="2" Grid.Column="1" Content="Poništi uplatu" FontSize="20"/>
+
+                <!--<Button Height="70" Width="250" Grid.Row="1" Grid.Column="3" Command="{Binding IsplataCommand}"  Content="Unos podataka o isplati" FontSize="20"/>-->
+
+                <Button Command="{Binding IsplataCommand}" Height="70" Width="250" Grid.Row="1" Grid.Column="2"  Content="Isplata" FontSize="20"/>
+
+                <Button Command="{Binding PonistiIsplatuCommand}" Height="70" Width="280" Grid.Row="2" Grid.Column="2" Content="Poništi isplatu" FontSize="20"/>
+
+                <Button Command="{Binding KladUplIsplCommand}" Height="70" Width="320" Grid.Row="1" Grid.Column="3" Content="Kladionica " FontSize="20"/>
+
+                <Button Command="{Binding PonistiKladionicuCommand}" Height="70" Width="280" Grid.Row="2" Grid.Column="3" Content="Poništi kladionicu" FontSize="20"/>
+
+                <Button Command="{Binding PazarCommand}" Height="70" Width="250" Grid.Row="1" Grid.Column="4" Content="Pazar" FontSize="20"/>
+
+                <Button Command="{Binding PonistiPazarCommand}" Height="70" Width="280" Grid.Row="2" Grid.Column="4" Content="Poništi pazar" FontSize="20"/>
+
+                <Button Command="{Binding AutomatiCommand}" Height="70" Width="250" Grid.Row="1" Grid.Column="5" Content="Automati" FontSize="20"/>
+
+                <Button Command="{Binding PonistiAutomateCommand}" Height="70" Width="280" Grid.Row="2" Grid.Column="5" Content="Poništi automate" FontSize="20"/>
+
+                <Button Command="{Binding MultiUplata}" Height="70" Width="250" Grid.Row="3" Grid.Column="1" Content="MultiUplata" FontSize="20"/>
+
+                <Button Command="{Binding MultiIsplata}" Height="70" Width="250" Grid.Row="3" Grid.Column="2" Content="MultiIsplata" FontSize="20"/>
+
+                <Button Command="{Binding MultiKladionica}" Height="70" Width="250" Grid.Row="3" Grid.Column="3" Content="MultiKladionica" FontSize="20"/>
+
+              
+
+            </Grid>
+
+        </Grid>
+
+    </DockPanel>
+
+</UserControl>

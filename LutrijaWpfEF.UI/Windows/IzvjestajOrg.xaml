@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:local="clr-namespace:LutrijaWpfEF.UI.Windows"
+        xmlns:UI="clr-namespace:LutrijaWpfEF.UI" x:Class="LutrijaWpfEF.UI.Windows.IzvjestajOrg"
+        xmlns:BoldReports="clr-namespace:BoldReports.UI.Xaml;assembly=BoldReports.Wpf"
+        xmlns:vm="clr-namespace:LutrijaWpfEF.ViewModel;assembly=LutrijaWpfEF.ViewModel"
+        mc:Ignorable="d"
+        Title="Štampanje" WindowState="Maximized">
+    
+    <!--xmlns:rv="clr-namespace:Microsoft.ReportViewer.WinForms;assembly=Microsoft.ReportViewer.WinForms"-->
+    <!--<Window.Resources>
+        <DataTemplate DataType="{x:Type vm:IzvjestajViewModel}">
+            <local:IzvjestajOrg/>
+        </DataTemplate>
+    </Window.Resources>-->
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <DatePicker Height="25" HorizontalAlignment="Left" Margin="7,8,0,0" Name="txtDat" VerticalAlignment="Top" Width="115" Visibility="Hidden" Grid.Row="0" Grid.Column="0" />
+            <Button Name="btnOdustani" Width="100" HorizontalAlignment="Right" Click="Zatvori" Visibility="{Binding Path=OdustaniVisible}"  IsCancel="True" Margin="0,0,5,0">
+                <!--<Button Name="btnOdustani" Width="100" HorizontalAlignment="Right" Visibility="{Binding Path=OdustaniVisible}"  IsCancel="True" Margin="0,0,5,0" Click="btnOdustani_Click">-->
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Ikone/izlaz.png" Width="16" Height="16" Margin="0,0,5,0" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Zatvori</TextBlock>
+                </StackPanel>
+            </Button>
+            <!--<BoldReports:ReportViewer Name="ReportViewer" HorizontalAlignment="Left" Width="760" />-->
+        </Grid>
+        <WindowsFormsHost Name="windowsFormsHost1">
+            <rv:ReportViewer x:Name="_reportViewer"/>
+        </WindowsFormsHost>
+    </DockPanel>
+</Window>

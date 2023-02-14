@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="LutrijaWpfEF.UI.IzmijeniIsplOsnovnihDino"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:LutrijaWpfEF.ViewModel;assembly=LutrijaWpfEF.ViewModel"
+             xmlns:local="clr-namespace:LutrijaWpfEF.UI"
+             xmlns:validation="clr-namespace:LutrijaWpfEF.UI.Validation_Rules"
+             xmlns:currency="clr-namespace:CurrencyTextBoxControl;assembly=CurrencyTextBoxControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:IzmijeniIsplOsnovnihViewModel}">
+            <local:IzmijeniIsplOsnovnihDino/>
+        </DataTemplate>
+
+        <!--<ControlTemplate x:Key="ValidationTemplate">
+            <DockPanel LastChildFill="true">
+                <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" 
+                                Width="20" Height="20" CornerRadius="5"
+                                ToolTip="{Binding ElementName=customAdorner, 
+                                          Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                    <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" 
+                                   FontWeight="Bold" Foreground="white" />
+                </Border>
+                <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                    <Border BorderBrush="red" BorderThickness="1" />
+                </AdornedElementPlaceholder>
+            </DockPanel>
+        </ControlTemplate>-->
+    </UserControl.Resources>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label x:Name="label" Content="Komitent(OP_BROJ_PROD)"></Label>
+
+        <!--Ovdje ukljucujemo eksplicitno validaciju (stavimo na true), mada je ona po defaultu True-->
+        <TextBox IsReadOnly="True" Margin="0,10,5,0" FontWeight="Bold" VerticalAlignment="Bottom" Width="300" FontSize="18" Name="KomitentImePrez">
+            <TextBox.Text>
+                <Binding Path="OdabranaIsplata.LIS_ISPL" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:NoBlankRule NulaDozovljena="False" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <!--<TextBox.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding KomitentiCommand}" />
+            </TextBox.InputBindings>-->
+
+        </TextBox>
+        <Label x:Name="label1" Content="Opis"></Label>
+
+
+        <!--<Label x:Name="label1" Content="Opis"></Label>-->
+        <!--<TextBox Text="{Binding OdabranaIsplata.OPIS, ValidatesOnNotifyDataErrors=True,UpdateSourceTrigger=PropertyChanged}" x:Name="opisTxtBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Margin="0,0,0,10"></TextBox>-->
+        <Label x:Name="label2" Content="Datum"></Label>
+        <DatePicker SelectedDate="{Binding OdabranaIsplata.LIS_VRISPL, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" x:Name="datumTxtBox" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="250" Margin="0,0,0,10"></DatePicker>
+        <Label x:Name="label3" Content="Iznos"></Label>
+        <currency:CurrencyTextBox Number="{Binding OdabranaIsplata.LIS_IZNOS}" x:Name="IznosTxtBox" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="250" Margin="0,0,0,10" Language="bs-Ba" />
+        <Label x:Name="label4" Content="IGRA"></Label>
+        <!--<TextBox Text="{Binding OdabranaIsplata.LIS_IGRA, ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}" x:Name="igraTxtBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Margin="0,0,0,20"></TextBox>-->
+        <ComboBox x:Name="combobox" ItemsSource="{Binding SveIgre}" SelectedItem="{Binding Igra}" Grid.Column="1" Grid.Row="2" Height="38"  FontSize="18">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding NAZIV}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="label5" Content="KOLO"></Label>
+        <TextBox x:Name="koloTxtBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Margin="0,0,0,20">
+            <TextBox.Text>
+                <Binding Path="OdabranaIsplata.LIS_KOLO" ValidatesOnExceptions="True" 
+             UpdateSourceTrigger="PropertyChanged" 
+             ValidatesOnDataErrors="True"
+                         >
+                    <Binding.ValidationRules>
+                        <validation:NotEmptyStringValidationRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding SpasiCommand}"  x:Name="button" Content="Spasi" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" >
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Setter Property="IsEnabled" Value="False"/>
+
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=KomitentImePrez}" Value="False"/>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=koloTxtBox}" Value="False"/>
+
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Command="{Binding OdustaniCommand}" x:Name="button2" Content="Odustani" Margin="20,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+
